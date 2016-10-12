@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item type="id" name="gridview" />
+    <item type="id" name="webview" />
+    <item type="id" name="scrollview" />
+
+    <item name="llBody" type="id">2</item>
+    <item name="rlThumb" type="id">1</item>
+    <item name="llTitle" type="id">1</item>
+
+    <item name="adapter_item_tag_key" type="id"/>
+</resources>
