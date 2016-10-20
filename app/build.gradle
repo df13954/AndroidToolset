@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
@@ -18,6 +19,13 @@ android {
         }
     }
 }
+//配置greendao生成的Java.class位置
+greendao {
+    schemaVersion 1
+    targetGenDir 'src/main/java'
+    //指定生成的保存目录
+    daoPackage 'com.ldrong.androidtoolset.greendao'
+}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -26,13 +34,21 @@ dependencies {
     })
     compile libs.supportAppCompat
     testCompile libs.junit
+    //日志
     compile libs.logUtils
+    //图库
     compile project(':galleryfinal')
+    //图片加载
     compile libs.glide
     compile libs.imageLoad
+    //网络请求
     compile libs.okhttp3
     compile libs.okhttpUtils
     compile libs.okio
+    //控件获取：黄油刀
     compile libs.butterknife
     compile libs.butterknifeApt
+    //数据库
+    compile libs.gd3
+
 }
