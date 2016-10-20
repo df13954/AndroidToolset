@@ -170,5 +170,8 @@ ext.libs = [
         superrecycleview     : "com.supercwn.superrecycleview:superlibrary:1.2.0",
         //分割线
         flexibledivider      : "com.yqritc:recyclerview-flexibledivider:1.2.9",
+
+        //图片压缩
+        luban                : "top.zibin:Luban:1.0.5",
 ]
 
