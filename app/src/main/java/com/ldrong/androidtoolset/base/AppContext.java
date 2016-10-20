@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.apkfuns.logutils.LogLevel;
 import com.apkfuns.logutils.LogUtils;
+import com.ldrong.androidtoolset.greendao.DaoSession;
+import com.ldrong.androidtoolset.utils.greendaoutils.DatabaseManagerImpl;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.concurrent.TimeUnit;
@@ -16,6 +18,9 @@ import okhttp3.OkHttpClient;
  */
 
 public class AppContext extends Application {
+    private static final String TAG = "AppContext";
+    private static DatabaseManagerImpl databaseManager;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -36,5 +41,24 @@ public class AppContext extends Application {
                 .configShowBorders(true)
                 .configFormatTag("%d{HH:mm:ss:SSS} %t %c{-5}")
                 .configLevel(LogLevel.TYPE_INFO);
+        //初始化数据库，打开数据库
+        initGreenDao();
+    }
+
+    /**
+     * 初始化数据库，打开数据库
+     */
+    private void initGreenDao() {
+        databaseManager = new DatabaseManagerImpl();
+        databaseManager.startup(this);
+    }
+
+    /**
+     * 提供外部使用
+     *
+     * @return DaoSession
+     */
+    public static DaoSession getGreenDaoSessino() {
+        return databaseManager.getDaoSession();
     }
 }

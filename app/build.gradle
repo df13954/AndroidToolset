@@ -50,5 +50,7 @@ dependencies {
     compile libs.butterknifeApt
     //数据库
     compile libs.gd3
+    //json
+    compile libs.fastjson
 
 }
