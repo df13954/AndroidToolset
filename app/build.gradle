@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'com.getkeepsafe.dexcount'
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
@@ -17,6 +18,20 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    //方法统计 terminal > gradlew assembledebug
+    dexcount {
+        format = "list"
+        includeClasses = false
+        includeFieldCount = true
+        includeTotalMethodCount = false
+        orderByMethodCount = false
+        verbose = false
+        maxTreeDepth = Integer.MAX_VALUE
+        teamCityIntegration = false
+        enableForInstantRun = false
+        teamCitySlug = null
+        runOnEachAssemble = true
     }
 }
 //配置greendao生成的Java.class位置
@@ -52,5 +67,6 @@ dependencies {
     compile libs.gd3
     //json
     compile libs.fastjson
+
 
 }

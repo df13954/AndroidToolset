@@ -173,5 +173,23 @@ ext.libs = [
 
         //图片压缩
         luban                : "top.zibin:Luban:1.0.5",
+
+        //dex 方法数统计 maven { url "https://plugins.gradle.org/m2/" }
+        dexcountplugin             : "com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.1",
+        //apply plugin: 'com.getkeepsafe.dexcount'
+//        dexcount {
+//            format = "list"
+//            includeClasses = false
+//            includeFieldCount = true
+//            includeTotalMethodCount = false
+//            orderByMethodCount = false
+//            verbose = false
+//            maxTreeDepth = Integer.MAX_VALUE
+//            teamCityIntegration = false
+//            enableForInstantRun = false
+//            teamCitySlug = null
+//            runOnEachAssemble = true
+//        }
+
 ]
 
