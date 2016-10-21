@@ -2,6 +2,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'com.getkeepsafe.dexcount'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
@@ -10,15 +14,58 @@ android {
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"//这个位置，可以和apk版本一直，terminal打包的时候，可以自定义apk名字
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //数据外部注入，不写在配置文件中，可以保护数据泄露
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE : "umeng",
+                                UMENG_APPKEY_VALUE  : properties.getProperty("umengAppKey"),
+                                YOUMI_CHANNEL_VALUE : "value",
+                                UMENG_MESSAGE_SECRET: properties.getProperty("umeng_message_secret")
+        ]
+    }
+    //签名 签名的pwd和key保存在local中，不写代码中
+    signingConfigs {
+        release {
+            //本地的签名文件
+            storeFile file('D:\\appkey\\kapokhealth.jks')
+            storePassword properties.getProperty("storePassword")
+            keyAlias properties.getProperty("keyAlias")
+            keyPassword properties.getProperty("keyPassword")
+        }
     }
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        baidu {}
+        uc {}
+
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(
+                    output.outputFile.parent + "/${variant.buildType.name}",
+                    //自定义apk文件name
+                    "androidtoolset-${variant.buildType.name}-V${variant.versionName}.apk".toLowerCase())
+        }
+    }
+    lintOptions {
+        //中英文报错
+        disable 'MissingTranslation'
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
     //方法统计 terminal > gradlew assembledebug
     dexcount {
         format = "list"
