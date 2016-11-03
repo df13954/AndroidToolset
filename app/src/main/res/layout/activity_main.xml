@@ -29,4 +29,20 @@
         android:layout_centerHorizontal="true"
         android:text="query"
         />
+
+    <Button
+        android:id="@+id/errortext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="错误报告"
+        android:layout_below="@id/btn_query"
+        android:layout_centerHorizontal="true"
+        />
+    <Button
+        android:id="@+id/rep"
+        android:onClick="ttttt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="模拟点击奔溃"
+        />
 </RelativeLayout>

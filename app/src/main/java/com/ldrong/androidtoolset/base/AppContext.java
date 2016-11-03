@@ -4,9 +4,13 @@ import android.app.Application;
 
 import com.apkfuns.logutils.LogLevel;
 import com.apkfuns.logutils.LogUtils;
+import com.ldrong.androidtoolset.errors.UEHandler;
 import com.ldrong.androidtoolset.greendao.DaoSession;
 import com.ldrong.androidtoolset.utils.greendaoutils.DatabaseManagerImpl;
 import com.zhy.http.okhttp.OkHttpUtils;
+
+import org.apache.http.conn.ssl.AllowAllHostnameVerifier;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -43,6 +47,8 @@ public class AppContext extends Application {
                 .configLevel(LogLevel.TYPE_INFO);
         //初始化数据库，打开数据库
         initGreenDao();
+        SSLSocketFactory.getSocketFactory().setHostnameVerifier(new AllowAllHostnameVerifier());
+        Thread.setDefaultUncaughtExceptionHandler(new UEHandler(this));
     }
 
     /**

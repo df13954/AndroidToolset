@@ -1,6 +1,8 @@
 package com.ldrong.androidtoolset;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -8,8 +10,11 @@ import android.widget.Toast;
 import com.apkfuns.logutils.LogUtils;
 import com.ldrong.androidtoolset.base.AppContext;
 import com.ldrong.androidtoolset.base.BaseActivity;
+import com.ldrong.androidtoolset.conn.Constant;
+import com.ldrong.androidtoolset.errors.ErrorReportActivity;
 import com.ldrong.androidtoolset.greendao.DaoSession;
 import com.ldrong.androidtoolset.greendao.User;
+import com.ldrong.androidtoolset.utils.SharePerferenceUtil;
 
 import java.util.Random;
 
@@ -25,6 +30,10 @@ public class MainActivity extends BaseActivity {
     RelativeLayout activityMain;
     @BindView(R.id.btn_query)
     Button btnQuery;
+    @BindView(R.id.errortext)
+    Button errortext;
+    @BindView(R.id.rep)
+    Button rep;
     private DaoSession mSession;
 
     @Override
@@ -50,5 +59,20 @@ public class MainActivity extends BaseActivity {
     public void onClick() {
         LogUtils.e(mSession.getUserDao().queryBuilder().list());
         Toast.makeText(mContext, "" + mSession.getUserDao().queryBuilder().list(), Toast.LENGTH_SHORT).show();
+    }
+
+    @OnClick(R.id.errortext)
+    public void onClick11() {
+        //进入查看错误报告的界面
+        SharePerferenceUtil perferenceUtil = SharePerferenceUtil.getInstance(this, Constant.APP_INFO);
+        String s = perferenceUtil.getStringValue(Constant.ERRORMSG);
+        if (TextUtils.isEmpty(s)) {
+            return;
+        }
+        Intent intent = new Intent(this, ErrorReportActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("error", s);
+        intent.putExtra("by", "uehandler");
+        startActivity(intent);
     }
 }

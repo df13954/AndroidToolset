@@ -14,4 +14,6 @@ public class Constant {
     public static int screenHeight;
     //服务器时间
     public static long timecorrect;
+    public static String APP_INFO = "AppInfo";
+    public static String ERRORMSG = "ERRORMSG";
 }

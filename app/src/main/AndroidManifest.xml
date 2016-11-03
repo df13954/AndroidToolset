@@ -28,6 +28,8 @@
         <meta-data
             android:name="UMENG_MESSAGE_SECRET"
             android:value="${UMENG_MESSAGE_SECRET}" />
+
+        <activity android:name=".errors.ErrorReportActivity"></activity>
     </application>
 
 </manifest>

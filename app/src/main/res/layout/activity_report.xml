@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="你能看到这个界面是因为你的应用在之前崩溃了，请把这个信息告知开发，若不需求，点击返回即可."
+            />
+
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:orientation="vertical"
+            android:scrollbars="none" >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/tv_errormsg"/>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="返回"
+            android:id="@+id/btn_clear"/>
+
+            </LinearLayout></ScrollView>
+
+</LinearLayout>
