@@ -190,6 +190,8 @@ ext.libs = [
 //            teamCitySlug = null
 //            runOnEachAssemble = true
 //        }
+//一个可以显示不同颜色和图片拼接的textview
+textViewUtils:"com.github.iwgang:simplifyspan:1.1",
 
 ]
 
