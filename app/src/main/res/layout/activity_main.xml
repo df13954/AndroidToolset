@@ -1,48 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ldrong.androidtoolset.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+
     <Button
         android:id="@+id/btn_insert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="insert"
-        />
+        android:text="insert" />
+
     <Button
         android:id="@+id/btn_query"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_insert"
         android:layout_centerHorizontal="true"
-        android:text="query"
-        />
+        android:text="query" />
+
+    <Button
+        android:id="@+id/rep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="ttttt"
+        android:text="模拟点击奔溃" />
 
     <Button
         android:id="@+id/errortext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="错误报告"
         android:layout_below="@id/btn_query"
         android:layout_centerHorizontal="true"
-        />
-    <Button
-        android:id="@+id/rep"
-        android:onClick="ttttt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="模拟点击奔溃"
-        />
-</RelativeLayout>
+        android:text="错误报告" />
+
+
+</LinearLayout>

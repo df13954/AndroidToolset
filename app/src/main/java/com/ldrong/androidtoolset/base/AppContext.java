@@ -8,6 +8,7 @@ import com.ldrong.androidtoolset.errors.UEHandler;
 import com.ldrong.androidtoolset.greendao.DaoSession;
 import com.ldrong.androidtoolset.utils.greendaoutils.DatabaseManagerImpl;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.log.LoggerInterceptor;
 
 import org.apache.http.conn.ssl.AllowAllHostnameVerifier;
 import org.apache.http.conn.ssl.SSLSocketFactory;
@@ -22,7 +23,7 @@ import okhttp3.OkHttpClient;
  */
 
 public class AppContext extends Application {
-    private static final String TAG = "AppContext";
+    private static final String TAG = "androidtoolset";
     private static DatabaseManagerImpl databaseManager;
 
     @Override
@@ -30,7 +31,7 @@ public class AppContext extends Application {
         super.onCreate();
         //初始化请求
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-//                .addInterceptor(new LoggerInterceptor("TAG"))
+                .addInterceptor(new LoggerInterceptor("TAG"))
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
                 //其他配置

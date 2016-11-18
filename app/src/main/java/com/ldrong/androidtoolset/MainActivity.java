@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.apkfuns.logutils.LogUtils;
@@ -26,8 +25,6 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.btn_insert)
     Button btnInsert;
-    @BindView(R.id.activity_main)
-    RelativeLayout activityMain;
     @BindView(R.id.btn_query)
     Button btnQuery;
     @BindView(R.id.errortext)
@@ -43,9 +40,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         mSession = AppContext.getGreenDaoSessino();
 
-
         //Log.e(TAG, "表数据：" + DjsonUtils.bean2Json(mSession.getUserDao().queryBuilder().list()));
-
 
     }
 
