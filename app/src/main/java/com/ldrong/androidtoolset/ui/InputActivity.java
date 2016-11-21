@@ -24,6 +24,7 @@ public class InputActivity extends AppCompatActivity {
         setContentView(R.layout.activity_input);
         ButterKnife.bind(this);
 
+        //android:windowSoftInputMode="adjustResize" 配置文件对应的Activity
         //检查剩余字数
         CheckTextNumber.setEditTextChangeListener(etContent,tvContent,800);
     }
