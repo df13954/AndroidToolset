@@ -2,7 +2,9 @@ package com.ldrong.androidtoolset;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -15,6 +17,7 @@ import com.ldrong.androidtoolset.errors.ErrorReportActivity;
 import com.ldrong.androidtoolset.greendao.DaoSession;
 import com.ldrong.androidtoolset.greendao.User;
 import com.ldrong.androidtoolset.ui.InputActivity;
+import com.ldrong.androidtoolset.utils.OnNoDoubleClickListener;
 import com.ldrong.androidtoolset.utils.SharePerferenceUtil;
 
 import java.util.Random;
@@ -37,6 +40,8 @@ public class MainActivity extends BaseActivity {
     Button btnInput;
     @BindView(R.id.activity_main)
     LinearLayout activityMain;
+    @BindView(R.id.nodouble)
+    Button nodouble;
     private DaoSession mSession;
 
     @Override
@@ -47,6 +52,18 @@ public class MainActivity extends BaseActivity {
         mSession = AppContext.getGreenDaoSessino();
 
         //Log.e(TAG, "表数据：" + DjsonUtils.bean2Json(mSession.getUserDao().queryBuilder().list()));
+        setListener();
+    }
+
+    private void setListener() {
+        //防止多次点击实现
+        nodouble.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            public void onclick(View v) {
+                Snackbar.make(activityMain,"点击",Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 
