@@ -22,4 +22,4 @@ DisplayTimeUtil
 ![image](https://github.com/rongdongliu/AndroidToolset/blob/master/img/QQ%E6%88%AA%E5%9B%BE20161118231957.png)
 
 ###文字输入计算，底部控件跟随键盘弹起, 防止按钮连续点击 
-![image](https://github.com/rongdongliu/AndroidToolset/blob/master/img/QQ%E6%88%AA%E5%9B%BE20161118231957.png)
+![image](https://github.com/rongdongliu/AndroidToolset/blob/master/img/Screenshot_1479712437.png)
