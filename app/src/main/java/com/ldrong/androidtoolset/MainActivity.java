@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.apkfuns.logutils.LogUtils;
@@ -13,6 +14,7 @@ import com.ldrong.androidtoolset.conn.Constant;
 import com.ldrong.androidtoolset.errors.ErrorReportActivity;
 import com.ldrong.androidtoolset.greendao.DaoSession;
 import com.ldrong.androidtoolset.greendao.User;
+import com.ldrong.androidtoolset.ui.InputActivity;
 import com.ldrong.androidtoolset.utils.SharePerferenceUtil;
 
 import java.util.Random;
@@ -31,6 +33,10 @@ public class MainActivity extends BaseActivity {
     Button errortext;
     @BindView(R.id.rep)
     Button rep;
+    @BindView(R.id.btn_input)
+    Button btnInput;
+    @BindView(R.id.activity_main)
+    LinearLayout activityMain;
     private DaoSession mSession;
 
     @Override
@@ -69,5 +75,10 @@ public class MainActivity extends BaseActivity {
         intent.putExtra("error", s);
         intent.putExtra("by", "uehandler");
         startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_input)
+    public void onClickinput() {
+        startInt(InputActivity.class);
     }
 }
